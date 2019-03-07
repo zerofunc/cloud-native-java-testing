@@ -33,18 +33,19 @@ public class AccountServiceTest {
 	
 	@Test
 	public void getUserAccountsReturnsSingleAccount() {
-		given(this.accountRepository.findAccountsByUsername("user"))
+		String user = "user";
+		given(this.accountRepository.findAccountsByUsername(user))
 				.willReturn(
 						Collections.singletonList(
-								new Account("user", new AccountNumber("123456789"))));
+								new Account(user, new AccountNumber("123456789"))));
 		
 		given(this.userService.getAuthenticatedUser())
-				.willReturn(new User(0L, "user", "John", "Doe"));
+				.willReturn(new User(0L, user, "John", "Doe"));
 		
 		List<Account> actual = accountService.getUserAccounts();
 		
 		assertThat(actual).size().isEqualTo(1);
-		assertThat(actual.get(0).getUserName()).isEqualTo("user");
+		assertThat(actual.get(0).getUserName()).isEqualTo(user);
 		assertThat(actual.get(0).getAccountNumber()).isEqualTo(new AccountNumber("123456789"));
 	}
 }

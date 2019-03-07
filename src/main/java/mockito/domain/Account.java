@@ -5,7 +5,8 @@ public class Account {
 	private AccountNumber accountNumber;
 	
 	public Account(String user, AccountNumber accountNumber) {
-	
+		this.userName = user;
+		this.accountNumber = accountNumber;
 	}
 	
 	public String getUserName() {
