@@ -7,6 +7,7 @@ public class User implements Serializable{
 	private String username;
 	private String firstName;
 	private String lastName;
+	private String email;
 	private Long createdAt;
 	private Long lasmodified;
 	public User() {
@@ -18,7 +19,14 @@ public class User implements Serializable{
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
-	
+
+	public User(String username, String firstname, String lastName, String email) {
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -65,5 +73,13 @@ public class User implements Serializable{
 	
 	public void setLasmodified(Long lasmodified) {
 		this.lasmodified = lasmodified;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
